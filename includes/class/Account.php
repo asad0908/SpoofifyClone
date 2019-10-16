@@ -1,10 +1,12 @@
 <?php 
 
 class Account{
+    private $connection;
     private $errorArray;
     
-    public function __construct(){
-     $this->errorArray = array();    
+    public function __construct($connection){
+     $this->errorArray = array();
+     $this->connection = $connection;    
     }
     public function register($un,$fn,$ln,$em,$em2,$pw,$pw2){
         $this->validateUsername($un);
@@ -14,8 +16,7 @@ class Account{
         $this->validatePassword($pw, $pw2);
         
         if(empty($this->errorArray)){
-            //insert into db
-            return true;
+            return $this->insertUserDetails($un, $fn, $ln, $em, $pw);
         }
         else{
             return false;
@@ -28,6 +29,19 @@ class Account{
             $error = "";
         }
         return "<span class='errorMessage'>$error</span>";
+    }
+
+    public function insertUserDetails($un, $fn, $ln, $em, $pw){
+        $encryptedPass = md5($pw);
+        $profilePic = "assets/images/profile-pics/head-emerald.png";
+        $date = date("Y-m-d");
+
+        $insertUser = "INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em', '$encryptedPass', '$date', '$profilePic')";
+
+        $result = mysqli_query($this->connection, $insertUser);
+        if($result){
+            header("Location: index.php");
+        }
     }
     
     
@@ -61,11 +75,6 @@ class Account{
             array_push($this->errorArray, Constants::$emailMatch);
             return;
         }
-        if(filter_var($em, FILTER_VALIDATE_EMAIL)){
-            array_push($this->errorArray, Constants::$emailInvalid);
-            return;
-        }
-
     }
     private function validatePassword($pw, $pw2){
         if($pw != $pw2){

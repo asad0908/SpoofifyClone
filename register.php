@@ -1,7 +1,15 @@
 <?php 
 include("includes/class/Account.php"); 
 include("includes/class/Constants.php"); 
-$account = new Account();
+include('includes/config.php');
+$account = new Account($connection);
+
+function getInputValue($value){
+    if(isset($_POST[$value])){
+        echo $_POST[$value];
+    }
+}
+
 ?>
 <?php include("includes/handlers/register-handler.php"); ?>
 <?php include("includes/handlers/login-handler.php"); ?>
@@ -35,27 +43,27 @@ $account = new Account();
       <p>
       <?php echo $account->getError(Constants::$usernameLength) ?>
        <label for="username">Username</label>
-       <input id="username" name="username" placeholder="e.g. John Doe" required type="text" autocomplete="off">
+       <input id="username" name="username" placeholder="e.g. John Doe" value="<?php getInputValue('username'); ?>" required type="text" autocomplete="off">
       </p>
       <p>
       <?php echo $account->getError(Constants::$firstnameLength) ?>
        <label for="firstName">First name</label>
-       <input id="firstName" name="firstName" placeholder="e.g. John" required type="text" autocomplete="off">
+       <input id="firstName" name="firstName" placeholder="e.g. John" value="<?php getInputValue('firstName'); ?>" required type="text" autocomplete="off">
       </p>
       <p>
       <?php echo $account->getError(Constants::$lastnameLenght) ?>
        <label for="lastName">Last name</label>
-       <input id="lastName" name="lastName" placeholder="e.g. Doe" required type="text" autocomplete="off">
+       <input id="lastName" name="lastName" placeholder="e.g. Doe" value="<?php getInputValue('lastName'); ?>" required type="text" autocomplete="off">
       </p>
       <p>
       <?php echo $account->getError(Constants::$emailInvalid) ?>
       <?php echo $account->getError(Constants::$emailMatch) ?>
        <label for="email">Email</label>
-       <input id="email" name="email" placeholder="e.g. doe@gmail.com" required type="email" autocomplete="off">
+       <input id="email" name="email" placeholder="e.g. doe@gmail.com" value="<?php getInputValue('email'); ?>" required type="email" autocomplete="off">
       </p>
       <p>
        <label for="email2">Confirm Email</label>
-       <input id="email2" name="email2" placeholder="e.g. doe@gmail.com" required type="email" autocomplete="off">
+       <input id="email2" name="email2" placeholder="e.g. doe@gmail.com" value="<?php getInputValue('email2'); ?>" required type="email" autocomplete="off">
       </p>
       <p>
       <?php echo $account->getError(Constants::$passwordAlpha) ?>
