@@ -23,6 +23,23 @@ class Account{
         }
         
     }
+
+    public function login($un, $pw){
+        $pw = md5($pw);
+        $query = "SELECT * FROM users WHERE username='$un' && password='$pw'";
+        $loginQuery = mysqli_query($this->connection, $query);
+        if(!$loginQuery){
+            echo "loginQueryFailed";
+            return;
+        }
+        if(mysqli_num_rows($loginQuery) == 1){
+            return true;
+        }
+        else{
+            array_push($this->errorArray, Constants::$loginFailed);
+            return false;
+        }
+    }
     
     public function getError($error){
         if(!in_array($error, $this->errorArray)){
@@ -51,6 +68,12 @@ class Account{
             array_push($this->errorArray, Constants::$usernameLength);
             return;
         }
+        $checkUsernameExists = "SELECT username FROM users WHERE username='$un'";
+        $usernameExists = mysqli_query($this->connection, $checkUsernameExists);
+        if(mysqli_num_rows($usernameExists) != 0){
+            array_push($this->errorArray, Constants::$usernameTaken);
+            return;
+        }
 
     }
     private function validateFirstname($fn){
@@ -73,6 +96,12 @@ class Account{
         
         if($em != $em2){
             array_push($this->errorArray, Constants::$emailMatch);
+            return;
+        }
+        $checkEmailExists = "SELECT email FROM users WHERE email='$em'";
+        $emailExists = mysqli_query($this->connection, $checkEmailExists);
+        if(mysqli_num_rows($emailExists) != 0){
+            array_push($this->errorArray, Constants::$emailTaken);
             return;
         }
     }
