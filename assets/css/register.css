@@ -70,6 +70,10 @@ body {
     line-height: 27px;
     width: 100%;
 }
+input:focus {
+    outline: none;
+}
+
 
 #inputContainer label {
 	color: #a0a0a0;
@@ -141,3 +145,4 @@ body {
     font-size: 12px;
     display: block;
 }
+
