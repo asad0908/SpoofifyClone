@@ -17,7 +17,7 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome to Slotify!</title>
-    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <div id="nowPlayingBarContainer">
@@ -59,6 +59,16 @@ else{
                  </div>
              </div>
              <div id="nowPlayingRight">
+                 <div class="volumeBar">
+                     <button class="controlButton volume" title="Volume Button">
+                         <img src="assets/images/icons/volume.png" alt="volume button">
+                     </button>
+                     <div class="progressBar">
+                            <div class="progressBarBg">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                 </div>
              </div>
       </div>
     </div>
