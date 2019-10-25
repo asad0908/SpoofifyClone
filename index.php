@@ -20,7 +20,31 @@ else{
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div id="nowPlayingBarContainer">
+    <div id="mainContainer">
+
+        <div id="topContainer">
+            <div id="navBarContainer">
+                <nav class="navBar">   
+                    <a href="index.php" class="logo">
+                        <img src="assets/images/icons/logo.png" alt="">
+                    </a>
+
+                    <div class="group">
+                        <div class="navItem">
+                            <a href="search.php">Search</a>
+                        </div>
+                    </div>
+                    <div class="group">
+                    
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+
+
+
+        <div id="nowPlayingBarContainer">
       <div id="nowPlayingBar">
              <div id="nowPlayingLeft">
                  <div class="content">
@@ -71,6 +95,7 @@ else{
                  </div>
              </div>
       </div>
+    </div>
     </div>
 </body>
 </html>
