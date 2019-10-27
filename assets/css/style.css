@@ -170,3 +170,34 @@ html, body{
 .logo img{
     width: 32px;
 }
+.logo{
+    margin-bottom: 15px;
+}
+
+.navBar .group{
+    border-top: 1px solid #a0a0a0;
+    padding: 10px 0;
+}
+
+.navItem{
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    letter-spacing: 1px;
+    position: relative;
+}
+.navItemLink{
+    color: #a0a0a0;
+    text-decoration: none;
+}
+.navItemLink:hover{
+    color: #fff;
+}
+
+.navItemLink .icon{
+    width: 25px;
+    top: 6px;
+    right: 0;
+    position: absolute;
+}
