@@ -9,6 +9,12 @@ html, body{
     color: #fff;
 }
 
+body{
+    background-color: #181818;
+    min-width: 720px;
+    font-size: 14px;
+}
+
 #nowPlayingBarContainer{
     width: 100%;
     background-color: #282828;
@@ -129,10 +135,11 @@ html, body{
     margin: 6px 0;
     display: inline-block;
     width: 100%;
+    font-size: 16px;
 }
 
 #nowPlayingLeft .trackInfo .artistName span{
-    font-size: 12px;
+    font-size: 14px;
     color: #a0a0a0;
 }
 
@@ -200,4 +207,13 @@ html, body{
     top: 6px;
     right: 0;
     position: absolute;
+}
+
+#mainViewContainer{
+    margin-left: 220px;
+    padding-bottom: 90px;
+    width: calc(100% - 220px);
+}
+#mainContent{
+    padding: 0 20px;
 }
