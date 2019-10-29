@@ -8,16 +8,28 @@ else{
     header("Location: index.php");
 }
 $album = new Album($connection, $albumId);
-
 $artist = $album->getArtist();
-
-echo $artist->getName() . "<br>";
-echo $album->getTitle();
-
-
-
-
 ?>
+
+<div class="entityInfo">
+    <div class="leftSection">
+        <img src="<?php echo $album->getArtworkPath(); ?>" alt="">
+    </div>
+    <div class="rightSection">
+        <?php 
+         //Display Customized Text
+         if($album->getNoOfSongs() == 1 || $album->getNoOfSongs() == 0){
+             $text = 'Song';
+         }
+         else{
+             $text = 'Songs';
+         }
+        ?>
+        <h2><?php echo $album->getTitle(); ?></h2>
+        <p>By <?php echo $artist->getName(); ?></p>
+        <p><?php echo $album->getNoOfSongs() . " ". $text; ?></p>
+    </div>
+</div>
 
 
 <?php include "includes/footer.php"; ?>
