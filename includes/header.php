@@ -1,5 +1,7 @@
 <?php 
 include "includes/config.php";
+include "includes/class/Artist.php";
+include "includes/class/Album.php";
 
 if(isset($_SESSION['userLoggedIn'])){
     $userLoggedIn = $_SESSION['userLoggedIn'];
