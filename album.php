@@ -48,10 +48,10 @@ $artist = $album->getArtist();
                     <span class="trackNumber"><?php echo $i; ?></span>
                 </div>
                 <div class="trackInfo">
-                    <span class="trackName"><?php echo $albumSong->getTitle();?></span>
+                    <span class="trackName"><b><?php echo $albumSong->getTitle();?></b></span>
                     <span class="artistName"><?php echo $albumArtist->getName();?></span>
                 </div>
-                <div class="trackInfo">
+                <div class="trackOptions">
                     <img src="assets/images/icons/more.png" class="optionsButton" alt="">
                 </div>
                 <div class="trackDuration">
