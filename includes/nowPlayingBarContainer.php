@@ -1,3 +1,43 @@
+<?php 
+$query = "SELECT id FROM songs ORDER BY rand() LIMIT 10";
+$songQuery = mysqli_query($connection, $query);
+$resultArray = array();
+while($row = mysqli_fetch_array($songQuery)){
+    array_push($resultArray, $row['id']);
+}
+
+$jsonArray = json_encode($resultArray);
+?>
+
+<script>
+$(document).ready(function(){
+    currentPlaylist = <?php echo $jsonArray; ?>;
+    audioElement = new Audio();
+    setTrack(currentPlaylist[0], currentPlaylist, false);
+});
+
+function setTrack(trackId, newPlaylist, play){
+    audioElement.setTrack("assets/music/Unstoppable.mp3");
+    if(play){
+        audioElement.play();
+    }
+}
+
+function playSong(){
+    $(".controlButton.play").hide();
+    $(".controlButton.pause").show();
+    audioElement.play();
+}
+
+function pauseSong(){
+    $(".controlButton.pause").hide();
+    $(".controlButton.play").show();
+    audioElement.pause();
+}
+
+
+</script>
+
 <div id="nowPlayingBarContainer">
             <div id="nowPlayingBar">
              <div id="nowPlayingLeft">
@@ -20,8 +60,8 @@
                      <div class="buttons">
                          <button class="controlButton shuffle" title="shuffle button"><img src="assets/images/icons/shuffle.png" alt="shuffle"></button>
                          <button class="controlButton previous" title="previous button"><img src="assets/images/icons/previous.png" alt="previous"></button>
-                         <button class="controlButton play" title="play button"><img src="assets/images/icons/play.png" alt="play"></button>
-                         <button class="controlButton pause" title="pause button" style="display: none;"><img src="assets/images/icons/pause.png" alt="pause"></button>
+                         <button class="controlButton play" title="play button"><img src="assets/images/icons/play.png" alt="play" onclick="playSong()"></button>
+                         <button class="controlButton pause" title="pause button" style="display: none;"><img src="assets/images/icons/pause.png" onclick="pauseSong()" alt="pause"></button>
                          <button class="controlButton next" title="next button"><img src="assets/images/icons/next.png" alt="next"></button>
                          <button class="controlButton repeat" title="repeat button"><img src="assets/images/icons/repeat.png" alt="repeat"></button>
                      </div>

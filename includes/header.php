@@ -21,15 +21,10 @@ else{
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome to Slotify!</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="assets/js/script.js"></script>
 </head>
 <body>
-    <script>
-	var audioElement = new Audio();
-	audioElement.setTrack("assets/music/Nidarr.mp3");
-	audioElement.audio.play();
-    </script>
-    
     <div id="mainContainer">
 
         <div id="topContainer">
