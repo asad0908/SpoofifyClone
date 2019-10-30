@@ -17,7 +17,11 @@ $(document).ready(function(){
 });
 
 function setTrack(trackId, newPlaylist, play){
-    audioElement.setTrack("assets/music/Unstoppable.mp3");
+    $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
+        console.log(data);
+    });
+
+
     if(play){
         audioElement.play();
     }
