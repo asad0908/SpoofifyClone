@@ -18,7 +18,21 @@ $(document).ready(function(){
 
 function setTrack(trackId, newPlaylist, play){
     $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
-        console.log(data);
+        let track = JSON.parse(data);
+        $(".trackName span").text(track.title);
+
+        $.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data){
+            let artist = JSON.parse(data);
+            $(".artistName span").text(artist.name);
+        });
+        $.post("includes/handlers/ajax/getAlbumJson.php", { albumId: track.album }, function(data){
+            let album = JSON.parse(data);
+            $(".albumArtwork").attr("src", album.artworkPath);
+            
+        });
+
+
+        audioElement.setTrack(track.path);
     });
 
 
@@ -47,14 +61,14 @@ function pauseSong(){
              <div id="nowPlayingLeft">
                  <div class="content">
                      <span class="albumLink">
-                         <img class="albumArtwork" src="https://static.wixstatic.com/media/35f40b_173bb8d9b17b43be8c84954447d10e3e~mv2_d_1205_1205_s_2.png/v1/fill/w_1205%2Ch_1205%2Cal_c%2Cq_90/file.jpg" alt="">
+                         <img class="albumArtwork" src="" alt="">
                      </span>
                      <div class="trackInfo">
                          <span class="trackName">
-                             <span>Happy Birthday</span>
+                             <span></span>
                          </span>
                          <span class="artistName">
-                             <span>Asad Memon</span>
+                             <span></span>
                          </span>
                      </div>
                  </div>
