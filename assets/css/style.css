@@ -113,7 +113,7 @@ body{
 .progress{
      background-color: #a0a0a0;
      height: 4px;
-     width: 12px;
+     width: 0;
      border-radius: 2px;
 }
 .playbackBar .progressBar{
