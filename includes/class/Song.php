@@ -19,6 +19,7 @@ class Song{
      $SongQuery = mysqli_query($this->connection, $query);
      $this->mySqliData = mysqli_fetch_array($SongQuery);  
      $this->title = $this->mySqliData['title'];
+     $this->id = $this->mySqliData['id'];
      $this->artistId = $this->mySqliData['artist'];
      $this->albumId = $this->mySqliData['album'];
      $this->genre = $this->mySqliData['genre'];
@@ -28,6 +29,9 @@ class Song{
 
     public function getTitle(){
         return $this->title;
+    }
+    public function getId(){
+        return $this->id;
     }
     public function getArtist(){
         return new Artist($this->connection, $this->artistId);
