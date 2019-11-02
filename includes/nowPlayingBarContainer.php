@@ -32,7 +32,7 @@ function setTrack(trackId, newPlaylist, play){
         });
 
 
-        audioElement.setTrack(track.path);
+        audioElement.setTrack(track);
     });
 
 
@@ -42,6 +42,9 @@ function setTrack(trackId, newPlaylist, play){
 }
 
 function playSong(){
+    if(audioElement.audio.currentTime == 0){
+        $.post("includes/handlers/ajax/updatePlays.php", { songId: audioElement.currentlyPlaying.id })
+    }
     $(".controlButton.play").hide();
     $(".controlButton.pause").show();
     audioElement.play();
@@ -90,7 +93,7 @@ function pauseSong(){
                                 <div class="progress"></div>
                             </div>
                         </div>
-                        <span class="progressTime remaining">0.00</span>
+                        <span class="progressTime remaining"></span>
                      </div>
                  </div>
              </div>
