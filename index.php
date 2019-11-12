@@ -1,37 +1,6 @@
-<?php include "includes/header.php"; ?>
+<?php 
+include("includes/includedFiles.php"); 
+?>
 
-<h1 class="pageHeadingBig">You Might Also Like!</h1>
-
-<div class="gridViewContainer">
-    <?php 
-    
-    $query = "SELECT * FROM albums ORDER BY rand() LIMIT 10";
-    $albumQuery = mysqli_query($connection, $query);
-    if(!$albumQuery){
-        echo "ERROR OCCURED";
-    }
-    while($row = mysqli_fetch_array($albumQuery)){
-        
-        $albumArtwork = $row['artworkPath'];
-        $albumTitle = $row['title'];
-        $albumId = $row['id'];
-
-        ?>
-        <div class="gridViewItem">
-            <a href="album.php?id=<?php echo $albumId; ?>">
-            <img src="<?php echo $albumArtwork; ?>" alt="Album Artwork">
-            <div class="gridViewInfo">
-                <?php echo $albumTitle; ?>
-            </div>
-            </a>
-        </div>
-        
-        <?php 
-
-    }
-
-    ?>
-</div>
-
-
-<?php include "includes/footer.php"; ?>              
+<script>openPage('browse.php');</script>
+             

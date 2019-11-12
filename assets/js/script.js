@@ -6,6 +6,18 @@ var mouseDown = false;
 var currentIndex = 0;
 var repeat = false;
 var shuffle = false;
+var userLoggedIn;
+
+
+function openPage(url){
+  if(url.indexOf("?") == -1){
+    url = url + "?";
+  }
+  var urlEncoded = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
+  $("#mainContent").load(url);
+  $("body").scrollTop(0);
+  history.pushState(null, null, url);
+}
 
 function formatTime(seconds){
   var time = Math.round(seconds);
