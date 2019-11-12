@@ -10,6 +10,7 @@ class Song{
     private $genre;
     private $duration;
     private $path;
+    private $pic;
     
     
     public function __construct($connection, $id){
@@ -25,6 +26,7 @@ class Song{
      $this->genre = $this->mySqliData['genre'];
      $this->duration = $this->mySqliData['duration'];
      $this->path = $this->mySqliData['path'];
+     $this->pic = $this->mySqliData['photo'];
     }
 
     public function getTitle(){
@@ -32,6 +34,9 @@ class Song{
     }
     public function getId(){
         return $this->id;
+    }
+    public function getpic(){
+        return $this->pic;
     }
     public function getArtist(){
         return new Artist($this->connection, $this->artistId);

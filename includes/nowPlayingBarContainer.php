@@ -164,6 +164,7 @@ function setTrack(trackId, newPlaylist, play){
     $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
         let track = JSON.parse(data);
         $(".trackName span").text(track.title);
+        $(".albumArtwork").attr("src", track.photo);
 
         $.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data){
             let artist = JSON.parse(data);
@@ -171,7 +172,6 @@ function setTrack(trackId, newPlaylist, play){
         });
         $.post("includes/handlers/ajax/getAlbumJson.php", { albumId: track.album }, function(data){
             let album = JSON.parse(data);
-            $(".albumArtwork").attr("src", album.artworkPath);
             
         });
 
